@@ -1,19 +1,18 @@
 // src/pages/Login.jsx
 import React from 'react';
 import './Login.css';
-import { API_URL } from '../config';
 
 function Login() {
   const handleGoogleLogin = () => {
-    // URL automática providenciada pelo Spring Security OAuth2 na nuvem
-    window.location.href = `${API_URL}/oauth2/authorization/google`;
+    // URL direta para o seu backend no Render (Spring Security OAuth2)
+    window.location.href = "https://ilsegreto-backend.onrender.com/oauth2/authorization/google";
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Il Segreto della Bellezza</h2>
-        <p className="login-subtitle">Accedi in totale sicurezza utilizzando il tuo account Google per gestire i tuoi ordini e il tuo profilo.</p>
+        <p className="login-subtitle">Accedi in totale sicurezza utilizzando il tuo account Google para gestire i tuoi ordini e il tuo profilo.</p>
 
         {/* Único botão de ação, limpo e elegante */}
         <button 
