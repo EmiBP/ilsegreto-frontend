@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ProductCard({ product }) {
+  // Estado para detectar se a tela é de um celular (menor que 768px)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Ajustes dinâmicos baseados no tamanho da tela
+  const cardStyle = {
+    ...styles.card,
+    borderRadius: isMobile ? '4px' : '8px', // Bordas sutilmente menores no mobile
+  };
+
+  const imageStyle = {
+    ...styles.image,
+    height: isMobile ? '160px' : '200px', // Imagem proporcional para telas menores
+  };
+
+  const titleStyle = {
+    ...styles.title,
+    fontSize: isMobile ? '14px' : '16px', // Texto confortável para o celular
+  };
+
+  const descriptionStyle = {
+    ...styles.description,
+    fontSize: isMobile ? '12px' : '13px',
+    height: isMobile ? '32px' : '36px',
+  };
+
+  const buttonStyle = {
+    ...styles.button,
+    padding: isMobile ? '12px 8px' : '10px', // Botão mais alto no celular para facilitar o clique
+    fontSize: isMobile ? '12px' : '14px',
+  };
+
   return (
-    <div style={styles.card}>
-      <img src={product.imageUrl} alt={product.name} style={styles.image} />
+    <div style={cardStyle}>
+      <img src={product.imageUrl} alt={product.name} style={imageStyle} />
       <div style={styles.info}>
-        <h3 style={styles.title}>{product.name}</h3>
-        <p style={styles.description}>{product.description}</p>
+        <h3 style={titleStyle}>{product.name}</h3>
+        <p style={descriptionStyle}>{product.description}</p>
         <div style={styles.priceContainer}>
           <span style={styles.price}>€ {product.price.toFixed(2)}</span>
         </div>
-        <button style={styles.button}>Aggiungi al carrello</button>
+        <button style={buttonStyle}>Aggiungi al carrello</button>
       </div>
     </div>
   );
@@ -19,18 +58,18 @@ function ProductCard({ product }) {
 const styles = {
   card: {
     backgroundColor: '#fff',
-    borderRadius: '8px',
     boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
     border: '1px solid #eee',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     transition: 'transform 0.2s',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    width: '100%', // Garante que ele ocupe 100% do espaço da grade responsiva
+    boxSizing: 'border-box'
   },
   image: {
     width: '100%',
-    height: '200px',
     objectFit: 'cover'
   },
   info: {
@@ -41,16 +80,13 @@ const styles = {
     flexGrow: 1
   },
   title: {
-    fontSize: '16px',
     fontWeight: 'bold',
     margin: 0,
     color: '#333'
   },
   description: {
-    fontSize: '13px',
     color: '#666',
     margin: 0,
-    height: '36px',
     overflow: 'hidden'
   },
   priceContainer: {
@@ -65,11 +101,12 @@ const styles = {
     backgroundColor: '#007bff',
     color: 'white',
     border: 'none',
-    padding: '10px',
     borderRadius: '4px',
     cursor: 'pointer',
     fontWeight: '500',
-    textAlign: 'center'
+    textAlign: 'center',
+    width: '100%',
+    boxSizing: 'border-box'
   }
 };
 
