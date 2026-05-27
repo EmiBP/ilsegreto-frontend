@@ -1,32 +1,23 @@
 /* src/pages/Catalog.css */
+
+/* Container Principal - Organização Lado a Lado */
 .catalog-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 40px 20px;
   display: flex;
-  flex-direction: column;
-  gap: 25px;
+  gap: 40px;
+  align-items: start;
+  box-sizing: border-box;
 }
 
-.catalog-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.results-counter {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* ESTRUTURA DA SIDEBAR DE FILTROS */
+/* ==========================================================================
+   BARRA LATERAL DE FILTROS (ESQUERDA)
+   ========================================================================== */
 .filters-sidebar {
+  flex: 1;
+  min-width: 260px;
+  max-width: 300px;
   background-color: #ffffff;
   border: 1px solid #eaeaea;
   padding: 25px;
@@ -34,11 +25,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .sidebar-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: #1a1a1a;
   text-align: center;
   margin: 0 0 10px 0;
@@ -47,7 +39,6 @@
   font-weight: 600;
 }
 
-/* BLOCO DE CADA FILTRO (LABEL + SELECT) */
 .filter-group-box {
   display: flex;
   flex-direction: column;
@@ -57,19 +48,18 @@
 }
 
 .filter-group-box h4 {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #333333;
+  color: #444444;
   letter-spacing: 0.5px;
   margin: 0;
 }
 
-/* CAIXAS DE SELEÇÃO MODERNAS E EXPANDIDAS */
+/* Inputs de seleção dos filtros */
 .filter-group-box select {
   width: 100% !important;
-  max-width: 100% !important;
-  padding: 12px 14px !important;
+  padding: 10px 12px !important;
   border: 1px solid #ddd !important;
   border-radius: 4px !important;
   background-color: #ffffff !important;
@@ -78,31 +68,28 @@
   color: #1a1a1a !important;
   outline: none !important;
   box-sizing: border-box !important;
-  height: 45px !important;
-  transition: border-color 0.2s ease;
+  height: 42px !important;
 }
 
-.filter-group-box select:focus {
-  border-color: #1a1a1a !important;
-}
-
-/* BOTÃO CANCELLA FILTRI ESPAÇADO E HIGH-END */
+/* Botão de Limpar Filtros */
 .clear-filters-btn {
   display: block !important;
   width: 100% !important;
   background-color: transparent !important;
   color: #1a1a1a !important;
   border: 1px solid #1a1a1a !important;
-  padding: 14px !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
   font-family: inherit !important;
   font-size: 0.85rem !important;
   text-transform: uppercase !important;
-  letter-spacing: 1px !important;
+  letter-spacing: 0.5px !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  margin-top: 15px !important;
+  margin-top: 10px !important;
   text-align: center !important;
   box-sizing: border-box !important;
+  font-weight: 500;
 }
 
 .clear-filters-btn:hover {
@@ -110,20 +97,237 @@
   color: #ffffff !important;
 }
 
-/* SEÇÃO LATERAL DE PRODUTOS */
+/* ==========================================================================
+   VITRINE DE PRODUTOS (DIREITA)
+   ========================================================================== */
 .catalog-products-side {
+  flex: 3;
   width: 100%;
 }
 
+.catalog-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #1a1a1a;
+  text-align: left;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.results-counter {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Grelha de Produtos - 3 Colunas Perfeitas */
 .catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px 25px !important;
+  width: 100% !important;
 }
 
 .no-products-found {
   text-align: center;
-  padding: 40px 0;
+  padding: 60px 0;
   color: #777;
   font-style: italic;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   CARDS DOS PRODUTOS & MATANDO A ESCADINHA
+   ========================================================================== */
+.catalog-card {
+  background-color: #ffffff;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important; /* Força todos os cards a terem tamanhos idênticos */
+  box-sizing: border-box;
+}
+
+/* Container da Imagem com Altura Fixa Alinhada */
+.catalog-img-container {
+  width: 100%;
+  height: 380px; /* Altura padrão simétrica de e-commerce de moda */
+  overflow: hidden;
+  background-color: #fcfcfc;
+  margin-bottom: 15px;
+  border: 1px solid #f5f5f5;
+}
+
+.catalog-img-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Preenche o espaço cortando sobras de forma inteligente */
+  transition: transform 0.4s ease !important;
+}
+
+.catalog-card:hover .catalog-img-container img {
+  transform: scale(1.02) !important;
+}
+
+/* Informações de Texto do Card */
+.catalog-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important; /* Faz a área crescer para alinhar os botões na base */
+}
+
+.catalog-item-brand {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888888;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+}
+
+.catalog-item-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+  min-height: 40px; /* Evita desalinhamento caso um nome ocupe duas linhas */
+}
+
+.catalog-item-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 15px 0;
+}
+
+/* ==========================================================================
+   CONTADOR (- 1 +) E BOTÃO DE ADICIONAR TOTALMENTE CORRIGIDOS
+   ========================================================================== */
+
+/* Linha de ações na base do card */
+.catalog-card-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin-top: auto !important; /* Gruda o botão e contador na borda inferior */
+  box-sizing: border-box !important;
+}
+
+/* O Seletor de Quantidade Moderno e Espaçado */
+.card-qty-selector {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border: 1px solid #1a1a1a !important; /* Borda preta elegante */
+  border-radius: 4px !important;
+  padding: 0 6px !important;
+  background-color: #ffffff !important;
+  width: 95px !important;
+  min-width: 95px !important;
+  height: 42px !important;
+  box-sizing: border-box !important;
+}
+
+/* Botões internos de Menos (-) e Mais (+) */
+.card-qty-selector button {
+  background: none !important;
+  border: none !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  color: #1a1a1a !important;
+  cursor: pointer !important;
+  width: 24px !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: background-color 0.2s !important;
+}
+
+.card-qty-selector button:hover {
+  background-color: #f5f5f5 !important;
+  border-radius: 2px !important;
+}
+
+/* Número centralizado com o espaçamento ideal */
+.card-qty-selector span {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  min-width: 25px !important;
+  text-align: center !important;
+  display: inline-block !important;
+}
+
+/* Botão Aggiungi (Preenche o restante do espaço com harmonia) */
+.catalog-add-btn {
+  flex-grow: 1 !important;
+  height: 42px !important;
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: opacity 0.2s !important;
+  padding: 0 10px !important;
+}
+
+.catalog-add-btn:hover {
+  opacity: 0.85 !important;
+}
+
+/* ==========================================================================
+   🚨 RESPONSIVIDADE ADAPTADA PARA CELULAR E TABLET
+   ========================================================================== */
+@media (max-width: 992px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas em telas médias */
+    gap: 20px !important;
+  }
+  .catalog-img-container {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-container {
+    flex-direction: column; /* Empilha os filtros em cima no mobile */
+    padding: 20px 15px;
+    gap: 30px;
+  }
+
+  .filters-sidebar {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .catalog-title {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .results-counter {
+    text-align: center;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Mantém 2 colunas organizadas no celular */
+    gap: 15px !important;
+  }
+
+  .catalog-img-container {
+    height: 240px; /* Reduz a altura para ficar perfeito em telas pequenas */
+  }
 }

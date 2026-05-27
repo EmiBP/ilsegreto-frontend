@@ -1,6 +1,6 @@
 // src/pages/Catalog.jsx
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Catalog.css';
 
@@ -64,6 +64,7 @@ function ProductCard({ product }) {
 function Catalog({ searchQuery }) {
     const [searchParams] = useSearchParams();
     const categoryParam = searchParams.get('category');
+    const navigate = useNavigate(); // 🚀 Ferramenta para redirecionar a página automaticamente
 
     const allProducts = [
         { id: 1, name: "Abito Elegante in Seta", category: "Abbigliamento", type: "abito", brand: "Gucci", color: "Rosso", size: "M", price: 129.00, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400" },
@@ -79,6 +80,13 @@ function Catalog({ searchQuery }) {
     const [selectedColor, setSelectedColor] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedType, setSelectedType] = useState("");
+
+    // 🚀 O CORAÇÃO DA SOLUÇÃO: Se o texto da busca sumir e não houver categoria ativa, chuta o usuário de volta para a Home
+    useEffect(() => {
+        if (!categoryParam && (!searchQuery || searchQuery.trim() === "")) {
+            navigate("/"); // Redireciona para a página inicial de forma limpa
+        }
+    }, [searchQuery, categoryParam, navigate]);
 
     useEffect(() => {
         setSelectedBrand("");

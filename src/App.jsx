@@ -1,24 +1,13 @@
-// Exemplo de estrutura ideal no seu src/App.jsx
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Catalog from './pages/Catalog';
-import { useSearchParams } from 'react-router-dom';
+// src/App.jsx
+import React from 'react';
+import AppRoutes from './routes/AppRoutes';
+import { CartProvider } from './context/CartContext'; // 🚨 IMPORTAÇÃO DO PROVEDOR DO CARRINHO
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchParams] = useSearchParams();
-  const categoryParam = searchParams.get('category');
-
   return (
-    <div className="app-container">
-      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      {(searchQuery.trim() !== "" || categoryParam) ? (
-        <Catalog searchQuery={searchQuery} />
-      ) : (
-        <Home />
-      )}
-    </div>
+    <CartProvider>
+      <AppRoutes />
+    </CartProvider>
   );
 }
 

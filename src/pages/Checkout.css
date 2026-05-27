@@ -7,7 +7,7 @@
 
 .checkout-main-title {
   font-family: 'Playfair Display', serif;
-  color: var(--primary-color);
+  color: var(--primary-color, #1a1a1a);
   font-size: 2rem;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -20,7 +20,7 @@
   align-items: start;
 }
 
-/* Left columns cards setup */
+/* Coluna da Esquerda: Formulários */
 .checkout-forms-section {
   flex: 2;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .checkout-block {
-  background-color: var(--white);
+  background-color: var(--white, #ffffff);
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.02);
@@ -39,13 +39,13 @@
 .block-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
-  color: var(--primary-color);
+  color: var(--primary-color, #1a1a1a);
   margin-bottom: 20px;
   border-bottom: 1px solid #f5f5f5;
   padding-bottom: 10px;
 }
 
-/* Form structures */
+/* Estrutura dos Inputs */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@
 .input-group label {
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--text-dark, #2c2c2c);
 }
 
 .input-group input {
@@ -69,7 +69,7 @@
 
 .input-group input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--primary-color, #1a1a1a);
 }
 
 .form-row-double {
@@ -82,7 +82,7 @@
   gap: 15px;
 }
 
-/* Payment Selector Styling */
+/* Seletores de Pagamento */
 .payment-selectors {
   display: flex;
   gap: 20px;
@@ -104,7 +104,7 @@
 
 .payment-radio-label:hover,
 .payment-radio-label.active {
-  border-color: var(--primary-color);
+  border-color: var(--primary-color, #1a1a1a);
   background-color: #fafdff;
 }
 
@@ -118,32 +118,96 @@
 .alternative-payment-info {
   background-color: #fffde7;
   padding: 15px;
-  border-left: 4px solid var(--accent-color);
+  border-left: 4px solid var(--accent-color, #007bff);
   font-size: 0.9rem;
   color: #555;
 }
 
-/* Right column summary setup */
+/* ==========================================================================
+   🚨 COLUNA DA DIREITA: RESUMO DO PEDIDO (RIEPILOGO) - CORRIGIDO
+   ========================================================================== */
 .checkout-summary-section {
   flex: 1;
-  background-color: var(--white);
+  background-color: var(--white, #ffffff);
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.02);
   border: 1px solid #eee;
   position: sticky;
-  top: 100px; /* Aligns visually during scroll if page is tall */
+  top: 100px;
+  box-sizing: border-box;
 }
 
+.checkout-summary-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--primary-color, #1a1a1a);
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 10px;
+  text-transform: normal;
+}
+
+/* FORÇA O FLEXBOX EM TODAS AS LINHAS DE TEXTO INTERNAS */
+.checkout-summary-section p,
+.checkout-summary-section div:not(.place-order-btn),
+.checkout-summary-line {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 14px 0 !important;
+  font-size: 0.95rem;
+  color: #555;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* DA PESO E COR AOS VALORES DA DIREITA */
+.checkout-summary-section span:last-child,
+.checkout-summary-section strong {
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+/* LINHA DE DESTAQUE PARA O TOTALE DA PAGARE */
+.checkout-summary-section p:last-of-type,
+.checkout-summary-section > div:nth-last-of-type(2),
+.checkout-summary-total {
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
+  color: #1a1a1a !important;
+  border-top: 1px dashed #ddd !important;
+  padding-top: 16px !important;
+  margin-top: 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Botão Completa l'Ordine */
 .place-order-btn {
-  width: 100%;
-  padding: 16px;
-  font-size: 1rem;
-  margin-top: 20px;
-  font-weight: bold;
+  width: 100% !important;
+  padding: 16px !important;
+  font-size: 1rem !important;
+  margin-top: 20px !important;
+  font-weight: bold !important;
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s !important;
+  display: block !important;
 }
 
-/* Success screen styling */
+.place-order-btn:hover {
+  opacity: 0.9 !important;
+}
+
+/* Tela de Sucesso */
 .checkout-success-container {
   display: flex;
   justify-content: center;
@@ -153,7 +217,7 @@
 }
 
 .success-card {
-  background-color: var(--white);
+  background-color: var(--white, #ffffff);
   padding: 40px;
   max-width: 500px;
   width: 100%;
@@ -168,12 +232,12 @@
 }
 
 .success-message {
-  color: var(--text-dark);
+  color: var(--text-dark, #2c2c2c);
   margin: 15px 0;
 }
 
 .order-details-box {
-  background-color: var(--bg-light);
+  background-color: var(--bg-light, #fafafa);
   padding: 20px;
   border-radius: 6px;
   margin: 25px 0;
@@ -186,7 +250,9 @@
   padding: 14px;
 }
 
-/* 🚨 REGRAS DE RESPONSIVIDADE REFINDADAS (Telas menores que 992px) */
+/* ==========================================================================
+   🚨 RESPONSIVIDADE PARA CELULAR E TABLET (Abaixo de 992px)
+   ========================================================================== */
 @media (max-width: 992px) {
   .checkout-container {
     padding: 20px 15px;
@@ -210,7 +276,7 @@
   }
 
   .checkout-summary-section {
-    position: static; /* Remove o sticky no celular para fluir naturalmente */
+    position: static;
     padding: 20px;
   }
 
@@ -218,14 +284,12 @@
     padding: 20px;
   }
 
-  /* Faz as linhas de inputs empilharem, mantendo o espaçamento padrão do margin-bottom */
   .form-row-double,
   .form-row-triple {
     flex-direction: column;
     gap: 0;
   }
 
-  /* Faz os seletores de pagamento (Cartão / PayPal) ficarem um embaixo do outro no celular */
   .payment-selectors {
     flex-direction: column;
     gap: 12px;
@@ -240,7 +304,6 @@
     padding: 15px;
   }
 
-  /* Ajuste fino na tela de sucesso para telas pequenas */
   .success-card {
     padding: 25px 15px;
   }
