@@ -195,8 +195,60 @@
   margin-bottom: 30px;
 }
 
+/* 🚨 REGRAS DE RESPONSIVIDADE (Telas menores que 768px) */
 @media (max-width: 768px) {
+  .cart-page-container {
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .cart-main-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
   .cart-layout-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* O resumo vai para baixo da lista */
+    gap: 25px;
+  }
+
+  .cart-item-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto; /* Reorganiza em grid fluido para caber no celular */
+    grid-template-areas: 
+      "img details remove"
+      "img controls total";
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  /* Posiciona os elementos internos de cada linha usando a estrutura de áreas do Grid */
+  .cart-item-img {
+    grid-area: img;
+  }
+
+  .cart-item-details {
+    grid-area: details;
+  }
+
+  .cart-remove-item-btn {
+    grid-area: remove;
+    text-align: right;
+  }
+
+  .cart-qty-controls {
+    grid-area: controls;
+    justify-self: start;
+  }
+
+  .cart-item-total-price {
+    grid-area: total;
+    text-align: right;
+  }
+
+  .cart-summary-card {
+    padding: 20px;
   }
 }

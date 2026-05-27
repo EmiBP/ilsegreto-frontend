@@ -3,181 +3,118 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 120px); /* Adjusts height discount navbar */
+  min-height: calc(100vh - 140px); /* Ajustado para dar um respiro chique na tela */
   padding: 40px 20px;
-  background-color: var(--bg-light);
+  background-color: #fafafa; /* Fundo suave idêntico ao restante do site */
 }
 
 .login-card {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  max-width: 450px;
+  background-color: #ffffff;
+  padding: 50px 40px;
+  border-radius: 2px; /* Bordas mais retas seguindo a estética de luxo */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eee;
+  max-width: 440px;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .login-title {
   font-family: 'Playfair Display', serif;
-  color: var(--primary-color);
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  color: var(--primary-color, #1a1a1a);
+  font-size: 2rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .login-subtitle {
-  color: var(--text-muted);
+  color: #666;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  margin-bottom: 30px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  padding: 0 10px;
 }
 
-/* Bottoni Social */
-.social-button {
+/* Botão Exclusivo do Google Premium */
+.google-login-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: var(--white);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 12px;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.social-icon {
-  margin-right: 10px;
-  font-size: 1.1rem;
-}
-
-.google-btn:hover {
-  background-color: #f1f1f1;
-}
-
-.facebook-btn {
-  background-color: #1877f2;
-  color: var(--white);
-  border: none;
-}
-
-.facebook-btn:hover {
-  background-color: #166fe5;
-}
-
-.instagram-btn {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  color: var(--white);
-  border: none;
-}
-
-.instagram-btn:hover {
-  opacity: 0.9;
-}
-
-/* Divisore */
-.login-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 25px 0;
-  color: var(--text-muted);
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid #1a1a1a; /* Borda escura para dar contraste sofisticado */
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   text-transform: uppercase;
-}
-
-.login-divider::before,
-.login-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #eee;
-}
-
-.login-divider:not(:empty)::before {
-  margin-right: .25em;
-}
-
-.login-divider:not(:empty)::after {
-  margin-left: .25em;
-}
-
-/* Form Tradizionale */
-.login-form {
-  text-align: left;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.85rem;
-  margin-bottom: 8px;
+  letter-spacing: 1px;
   font-weight: 500;
-  color: var(--text-dark);
-}
-
-.form-group input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
-.login-helpers {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   margin-bottom: 25px;
 }
 
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  color: var(--text-dark);
+.google-login-btn:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-color: #1a1a1a;
 }
 
-.forgot-password {
-  color: var(--text-muted);
-  text-decoration: none;
+/* Tamanho e alinhamento do logo do Google vetorizado */
+.google-icon-svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+  background: white;
+  padding: 4px;
+  border-radius: 2px;
 }
 
-.forgot-password:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
+.google-login-btn:hover .google-icon-svg {
+  transform: scale(1.05);
 }
 
-.login-submit-btn {
-  width: 100%;
-  padding: 14px;
-  font-size: 0.95rem;
+.login-footer-note {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #999;
+  line-height: 1.5;
+  margin-top: 20px;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 15px;
 }
 
-.login-register-redirect {
-  margin-top: 25px;
-  font-size: 0.9rem;
-  color: var(--text-dark);
-}
+/* 🚨 REGRAS DE RESPONSIVIDADE (Celulares) */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px 15px;
+    min-height: calc(100vh - 100px);
+  }
 
-.login-register-redirect a {
-  color: var(--primary-color);
-  font-weight: bold;
-  text-decoration: none;
-}
+  .login-card {
+    padding: 35px 20px;
+    border: none; /* Remove a borda em telas muito pequenas para ficar clean */
+    box-shadow: none; /* Usa o fundo limpo nativo no celular */
+    background-color: transparent;
+  }
 
-.login-register-redirect a:hover {
-  text-decoration: underline;
+  .login-title {
+    font-size: 1.6rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+  }
+
+  .google-login-btn {
+    height: 46px;
+    font-size: 0.8rem;
+  }
 }

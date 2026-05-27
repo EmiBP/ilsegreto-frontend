@@ -186,18 +186,66 @@
   padding: 14px;
 }
 
-/* Responsive breakpoints */
+/* 🚨 REGRAS DE RESPONSIVIDADE REFINDADAS (Telas menores que 992px) */
 @media (max-width: 992px) {
+  .checkout-container {
+    padding: 20px 15px;
+  }
+
+  .checkout-main-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
   .checkout-layout {
     flex-direction: column;
+    gap: 25px;
   }
+
   .checkout-forms-section,
   .checkout-summary-section {
     width: 100%;
+    flex: none;
   }
+
+  .checkout-summary-section {
+    position: static; /* Remove o sticky no celular para fluir naturalmente */
+    padding: 20px;
+  }
+
+  .checkout-block {
+    padding: 20px;
+  }
+
+  /* Faz as linhas de inputs empilharem, mantendo o espaçamento padrão do margin-bottom */
   .form-row-double,
   .form-row-triple {
     flex-direction: column;
     gap: 0;
+  }
+
+  /* Faz os seletores de pagamento (Cartão / PayPal) ficarem um embaixo do outro no celular */
+  .payment-selectors {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .payment-radio-label {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .credit-card-fields {
+    padding: 15px;
+  }
+
+  /* Ajuste fino na tela de sucesso para telas pequenas */
+  .success-card {
+    padding: 25px 15px;
+  }
+  
+  .success-icon {
+    font-size: 2.8rem;
   }
 }

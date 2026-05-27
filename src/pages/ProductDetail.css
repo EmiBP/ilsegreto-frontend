@@ -183,13 +183,90 @@
 .shipping-result {
   margin-top: 10px;
   font-size: 0.85rem;
-  color: #2e7d32; /* Green color for positive feedback */
+  color: #2e7d32;
 }
 
-/* Responsive adjustment */
+/* 🚨 REGRAS DE RESPONSIVIDADE REFINDADAS (Celulares) */
 @media (max-width: 768px) {
+  .detail-container {
+    padding: 20px 15px;
+  }
+
   .product-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Coloca a foto em cima e o texto embaixo */
     gap: 30px;
+  }
+
+  /* Ajuste da altura da imagem principal no mobile para não ocupar a tela toda */
+  .main-image-wrapper {
+    height: 380px;
+  }
+
+  /* Centraliza ou ajusta o scroll lateral de miniaturas se houver muitas */
+  .thumbnails-grid {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0; /* Impede que o celular amasse a miniatura */
+  }
+
+  /* Redução equilibrada de fontes textuais do cabeçalho */
+  .info-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .info-price {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  /* Permite que as variantes quebrem a linha elegantemente se faltar espaço */
+  .variants-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .variant-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* Ajuste crucial do bloco de compra no celular */
+  .actions-container {
+    flex-direction: row; /* Mantém lado a lado, mas reduz a altura interna */
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .quantity-selector {
+    height: 48px; /* Altura fixa confortável para cliques rápidos */
+  }
+
+  .quantity-selector button {
+    width: 35px;
+  }
+
+  .add-to-cart-btn {
+    height: 48px;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+
+  /* Formulário de Simulação de Frete */
+  .shipping-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .shipping-form input,
+  .shipping-submit-btn {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
   }
 }

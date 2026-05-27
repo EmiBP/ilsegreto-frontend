@@ -366,11 +366,90 @@
   margin-bottom: 15px;
 }
 
-/* Responsividade */
+/* ==========================================================================
+   🚨 REGRAS DE RESPONSIVIDADE (Telas menores que 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-  .profile-grid, .form-group-row {
+  .profile-dashboard-container {
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .profile-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+
+  .profile-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-header p {
+    font-size: 0.85rem;
+  }
+
+  /* Faz as duas colunas paralelas (dados e pagamento) empilharem verticalmente */
+  .profile-grid {
     grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .profile-section-card {
+    padding: 20px;
+  }
+
+  /* Ajusta o alinhamento das linhas simples (forte/vago) para caber nos ecrãs estreitos */
+  .profile-info-row {
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 0;
+  }
+
+  /* Cartão de crédito de luxo se ajusta à largura do display móvel */
+  .card-payment-box {
+    padding: 20px;
+  }
+
+  .masked-digits {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  /* Empilha os campos de inputs internos do formulário (Ex: Cità, CAP, Provincia) */
+  .form-group-row {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 0;
+  }
+
+  /* Faz os botões "Salva" e "Annulla" ocuparem linhas cheias para facilitar o clique */
+  .form-actions-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .save-btn, .cancel-btn {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+  }
+
+  /* Adiciona scroll lateral inteligente na tabela de ordens para evitar quebras de texto horríveis */
+  .profile-orders-section {
+    padding: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .orders-table {
+    min-width: 600px; /* Garante que a tabela mantenha sua forma chique sem amassar o texto */
+  }
+
+  .orders-table th, .orders-table td {
+    padding: 12px 10px;
+    font-size: 0.8rem;
   }
 }

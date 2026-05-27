@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-}
+} cutout-container
 
 /* Estilo do Banner */
 .hero-banner {
@@ -112,4 +112,70 @@
   width: 100%;
   font-size: 0.8rem;
   padding: 12px;
+}
+
+/* 🚨 REGRAS DE RESPONSIVIDADE (Telas menores que 768px) */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  /* Ajuste do Banner para não sumir com o texto e caber na tela do celular */
+  .hero-banner {
+    height: 300px;
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  /* Vitrine Dupla: exibe 2 produtos por linha perfeitamente equilibrados */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  /* Reduz a altura da imagem nos cards compactos do mobile */
+  .product-image-container {
+    height: 200px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-category {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+  }
+
+  .product-name {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Bota os 3 pontinhos se o nome do produto vazar */
+  }
+
+  .product-price {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .card-button {
+    padding: 10px 5px;
+    font-size: 0.75rem;
+  }
 }
