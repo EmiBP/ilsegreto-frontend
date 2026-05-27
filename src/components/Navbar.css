@@ -1,11 +1,8 @@
-/* ==========================================================================
-   IL SEGRETO DELLA BELLEZZA - BOUTIQUE LUXURY NAVBAR
-   ========================================================================== */
-
+/* src/components/Navbar.css */
 .navbar-header {
   width: 100%;
   background-color: var(--white, #ffffff);
-  border-bottom: 1px solid #f2f2f2; /* Linha sutil de alta costura em vez de sombra pesada */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -15,87 +12,94 @@
   background-color: var(--primary-color, #1a1a1a);
   color: var(--white, #ffffff);
   text-align: center;
-  padding: 8px 0;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  padding: 6px 0;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 }
 
+/* Container principal estruturado em blocos verticais centralizados */
 .navbar-main-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 25px 40px;
+  padding: 15px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 15px;
+}
+
+/* Linha 1: Título Centralizado */
+.navbar-brand {
+  text-align: center;
+  width: 100%;
 }
 
 .navbar-brand h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--primary-color, #1a1a1a);
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   margin: 0;
-  text-transform: uppercase;
+}
+
+/* Linha 2: Categorias Centralizadas */
+.navbar-navigation {
+  width: 100%;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 10px 0;
 }
 
 .navbar-navigation ul {
   display: flex;
   list-style: none;
-  gap: 35px;
+  gap: 25px;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .navbar-navigation a {
   text-decoration: none;
   color: var(--text-dark, #2c2c2c);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s;
 }
 
 .navbar-navigation a:hover {
-  opacity: 0.6; /* Efeito de transição suave e minimalista */
+  color: var(--accent-color);
 }
 
+/* Linha 3: Ações e Busca (Alinhados com respiro profissional) */
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
+  justify-content: center;
+  gap: 20px; /* Garante que os ícones não fiquem colados na caixa */
+  width: 100%;
+  max-width: 600px;
 }
 
 .search-input {
-  padding: 8px 14px;
-  border: 1px solid #e0e0e0;
-  border-radius: 0px; /* Quadrado boutique */
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.5px;
-  background-color: #fafafa;
-  transition: all 0.3s ease;
-  width: 180px;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #1a1a1a;
-  background-color: #ffffff;
+  flex-grow: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
 }
 
 .icon-button {
   background: none;
   border: none;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   cursor: pointer;
   position: relative;
   color: #1a1a1a;
-  padding: 0;
   display: flex;
   align-items: center;
 }
@@ -103,9 +107,7 @@
 .cart-badge {
   background-color: var(--primary-color, #1a1a1a);
   color: var(--white, #ffffff);
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: 0.7rem;
   padding: 2px 6px;
   border-radius: 50%;
   position: absolute;
@@ -113,7 +115,7 @@
   right: -10px;
 }
 
-/* Dropdown Utente */
+/* Dropdown Utente Flutuante */
 .user-menu-wrapper {
   position: relative;
   display: flex;
@@ -123,36 +125,32 @@
 .user-trigger {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   user-select: none;
-  cursor: pointer;
 }
 
 .navbar-user-name {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: #2c2c2c;
-  letter-spacing: 0.5px;
+  display: none !important; /* Escondido para manter o visual limpo da foto */
 }
 
 .navbar-dropdown-box {
   position: absolute;
-  top: calc(100% + 15px);
-  right: 0;
+  top: 35px;
+  right: 50%;
+  transform: translateX(50%);
   background-color: #ffffff;
-  min-width: 220px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eaeaea;
-  border-radius: 0px;
-  padding: 10px 0;
+  min-width: 200px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 8px 0;
   z-index: 1010;
 }
 
 .dropdown-user-email {
-  padding: 6px 20px;
+  padding: 4px 16px;
   font-size: 0.75rem;
-  color: #888888;
+  color: #777777;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -160,30 +158,28 @@
 
 .dropdown-line {
   border: 0;
-  border-top: 1px solid #f5f5f5;
-  margin: 8px 0;
+  border-top: 1px solid #eee;
+  margin: 6px 0;
 }
 
 .dropdown-link {
   display: block;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 16px;
   color: #2c2c2c;
   text-decoration: none;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.85rem;
   text-align: left;
   background: none;
   border: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s;
 }
 
 .dropdown-link:hover {
-  background-color: #fafafa;
-  color: #1a1a1a;
+  background-color: #f9f9f9;
+  color: var(--primary-color);
 }
 
 .logout-button-item {
@@ -191,77 +187,5 @@
 }
 
 .logout-button-item:hover {
-  background-color: #fff5f5;
-}
-
-/* ==========================================================================
-   🚨 DESIGN RESPONSIVO REFINADO (MOBILE HIGH-END)
-   ========================================================================== */
-@media (max-width: 768px) {
-  .navbar-top-bar {
-    font-size: 0.65rem;
-    padding: 6px 15px;
-    letter-spacing: 1px;
-  }
-
-  .navbar-main-container {
-    padding: 15px 20px;
-    flex-direction: column; /* Organiza o fluxo vertical de forma simétrica e limpa */
-    gap: 15px;
-  }
-
-  /* Título centralizado e imponente como uma marca de luxo */
-  .navbar-brand {
-    text-align: center;
-    width: 100%;
-  }
-
-  .navbar-brand h1 {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-  }
-
-  /* Links de Navegação: Alinhamento centralizado sutil, sem barras de rolagem feias */
-  .navbar-navigation {
-    width: 100%;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid #f8f8f8;
-    padding: 10px 0;
-  }
-
-  .navbar-navigation ul {
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Se houver muitas categorias, elas quebram com elegância */
-  }
-
-  .navbar-navigation a {
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-  }
-
-  /* Bloco de Ações e Busca perfeitamente equilibrados na base do cabeçalho */
-  .navbar-actions {
-    width: 100%;
-    justify-content: space-between; /* Afasta a barra de busca dos ícones com simetria */
-    gap: 15px;
-  }
-
-  .search-input {
-    flex-grow: 1; /* Ocupa o espaço disponível com elegância */
-    max-width: 60%;
-    padding: 8px 12px;
-  }
-
-  /* Oculta o nome de texto no mobile para manter o minimalismo visual */
-  .navbar-user-name {
-    display: none !important;
-  }
-
-  /* Alinhamento preciso do painel flutuante do usuário no mobile */
-  .navbar-dropdown-box {
-    top: calc(100% + 10px);
-    right: -10px;
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
-  }
+  background-color: #fdf2f2;
 }
