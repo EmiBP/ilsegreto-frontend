@@ -12,7 +12,7 @@ function Login() {
  const handleSocialLogin = (provider) => {
   if (provider === 'google') {
     // This URL is automatically provided by Spring Security OAuth2 Client
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = "https://ilsegreto-backend.onrender.com/oauth2/authorization/google";
   } else {
     alert(`Il login con ${provider} sarà configurato nei prossimi passi!`);
   }

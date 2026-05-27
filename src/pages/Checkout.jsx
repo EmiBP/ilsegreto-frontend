@@ -17,7 +17,7 @@ function Checkout() {
 
     // Busca os dados do usuário atual para preencher os inputs automaticamente
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/profile", { credentials: "include" })
+        fetch("https://ilsegreto-backend.onrender.com/api/user/profile", { credentials: "include" })
             .then(res => res.ok ? res.json() : null)
             .then(data => {
                 if (data) {
@@ -58,7 +58,7 @@ function Checkout() {
             emailUtente: emailDigitato // 🚨 Envia o e-mail que está escrito na caixinha de texto!
         };
 
-        fetch("http://localhost:8080/api/orders/create", {
+        fetch("https://ilsegreto-backend.onrender.com/api/orders/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(orderPayload),

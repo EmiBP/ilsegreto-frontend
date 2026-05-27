@@ -14,7 +14,7 @@ function Navbar({ searchQuery, setSearchQuery }) {
 
     // Verifica se o usuário está autenticado no Spring Boot assim que a Navbar monta
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/profile", { credentials: "include" })
+        fetch("https://ilsegreto-backend.onrender.com/api/user/profile", { credentials: "include" })
             .then(res => res.ok ? res.json() : null)
             .then(data => setUser(data))
             .catch(() => setUser(null));
@@ -29,7 +29,7 @@ function Navbar({ searchQuery, setSearchQuery }) {
 
     // Limpa a sessão no Java e recarrega a página limpando os estados do React
     const handleLogout = () => {
-        fetch("http://localhost:8080/api/user/logout", { method: "POST", credentials: "include" })
+        fetch("https://ilsegreto-backend.onrender.com/api/user/logout", { method: "POST", credentials: "include" })
             .then(() => {
                 setUser(null);
                 setDropdownOpen(false);

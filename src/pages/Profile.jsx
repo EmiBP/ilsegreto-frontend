@@ -19,7 +19,7 @@ function Profile() {
 
   // Coleta os dados do perfil ao carregar a página
   useEffect(() => {
-    fetch("http://localhost:8080/api/user/profile", { credentials: "include" })
+    fetch("https://ilsegreto-backend.onrender.com/api/user/profile", { credentials: "include" })
       .then(response => {
         if (!response.ok) throw new Error("Effettua prima il login con Google");
         return response.json();
@@ -56,7 +56,7 @@ function Profile() {
       datiPagamento: { circuito, cartaMascherata }
     };
 
-    fetch("http://localhost:8080/api/user/update", {
+    fetch("https://ilsegreto-backend.onrender.com/api/user/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedPayload),
