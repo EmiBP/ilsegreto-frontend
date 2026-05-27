@@ -1,0 +1,42 @@
+/* src/global.css */
+
+/* Reset básico para limpar as margens padrão do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Variáveis de cores para reaproveitarmos em todo o sistema */
+:root {
+  --primary-color: #1a1a1a;       /* Preto elegante para textos e menus */
+  --accent-color: #d4af37;        /* Dourado para destaques e botões secundários */
+  --brand-pink: #fbc2c4;          /* Rosa suave para a temática de beleza */
+  --bg-light: #f9f9f9;            /* Fundo claro para a página */
+  --text-dark: #333333;           /* Cor do texto principal */
+  --text-muted: #777777;          /* Cor para textos secundários (ex: frete) */
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Classe global de botão reutilizável para economizar código */
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+  background-color: var(--accent-color);
+}
