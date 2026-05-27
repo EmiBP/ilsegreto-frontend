@@ -11,7 +11,7 @@ import Catalog from '../pages/Catalog'; // Imported our new filtered view
 import Profile from '../pages/Profile';
 
 function AppRoutes() {
-  // Creating a shared state for the search bar tool
+  // Shared state for the search bar tool
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -20,12 +20,26 @@ function AppRoutes() {
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* 🚀 ROTA PRINCIPAL INTELIGENTE: 
+            Se houver algo digitado na busca, ela renderiza o catálogo de resultados.
+            Se a caixa de busca for apagada e ficar vazia, a Home reaparece no mesmo segundo! */}
+        <Route 
+          path="/" 
+          element={
+            searchQuery.trim() !== "" ? (
+              <Catalog searchQuery={searchQuery} />
+            ) : (
+              <Home />
+            )
+          } 
+        />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        {/* New catalog route bound to search triggers */}
+        
+        {/* Mantém a rota isolada do catálogo para cliques diretos em categorias do menu */}
         <Route path="/catalog" element={<Catalog searchQuery={searchQuery} />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
