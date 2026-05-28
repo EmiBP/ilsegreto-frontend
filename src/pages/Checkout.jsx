@@ -17,18 +17,22 @@ function Checkout() {
 
     // Busca os dados do usuário atual para preencher os inputs automaticamente
     useEffect(() => {
-        fetch("https://ilsegreto-backend.onrender.com/api/user/profile", { credentials: "include" })
-            .then(res => res.ok ? res.json() : null)
-            .then(data => {
-                if (data) {
-                    setEmail(data.email || '');
-                    setTelefono(data.telefono !== 'Non inserito' ? data.telefono : '');
-                    if (data.name) {
-                        setNome(data.name.split(' ')[0]);
-                    }
+        fetch('https://ilsegreto-backend.onrender.com/api/user/profile', {
+            credentials: 'include' // 🚀 Importante para enviar cookies/sessões se houver
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    // Se der 401, o usuário só não está logado. Tudo bem!
+                    console.log("Usuário não autenticado (visitante).");
+                    return null;
                 }
+                if (!response.ok) throw new Error("Erro ao buscar perfil");
+                return response.json();
             })
-            .catch(() => { });
+            .then(data => {
+                if (data) setUserProfile(data);
+            })
+            .catch(error => console.error("Erro na requisição:", error));
     }, []);
 
     // Cálculo dinâmico baseado no carrinho real
