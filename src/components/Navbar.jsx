@@ -15,7 +15,10 @@ function Navbar({ searchQuery, setSearchQuery }) {
     // Verifica se o usuário está autenticado no Spring Boot assim que a Navbar monta
     useEffect(() => {
         fetch("https://ilsegreto-backend.onrender.com/api/user/profile", { credentials: "include" })
-            .then(res => res.ok ? res.json() : null)
+            .then(res => {
+                if (res.status === 401) return null; // Trata o deslogado silenciosamente
+                return res.ok ? res.json() : null;
+            })
             .then(data => setUser(data))
             .catch(() => setUser(null));
     }, []);

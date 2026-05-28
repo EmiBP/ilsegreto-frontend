@@ -1,7 +1,6 @@
-// src/pages/Checkout.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../context/CartContext'; // 🚨 Conexão com o carrinho global
+import { useCart } from '../context/CartContext'; // Conexão com o carrinho global
 import './Checkout.css';
 
 function Checkout() {
@@ -18,21 +17,28 @@ function Checkout() {
     // Busca os dados do usuário atual para preencher os inputs automaticamente
     useEffect(() => {
         fetch('https://ilsegreto-backend.onrender.com/api/user/profile', {
-            credentials: 'include' // 🚀 Importante para enviar cookies/sessões se houver
+            credentials: 'include' // Importante para enviar cookies/sessões se houver
         })
             .then(response => {
                 if (response.status === 401) {
-                    // Se der 401, o usuário só não está logado. Tudo bem!
-                    console.log("Usuário não autenticado (visitante).");
+                    // Silencia o 401: Usuário deslogado (visitante anônimo)
                     return null;
                 }
                 if (!response.ok) throw new Error("Erro ao buscar perfil");
                 return response.json();
             })
             .then(data => {
-                if (data) setUserProfile(data);
+                if (data) {
+                    // 🚀 CORREÇÃO: Alimenta os estados corretos declarados no seu componente
+                    setNome(data.name || '');
+                    setEmail(data.email || '');
+                    setTelefono(data.telefono && data.telefono !== 'Non inserito' ? data.telefono : '');
+                }
             })
-            .catch(error => console.error("Erro na requisição:", error));
+            .catch(error => {
+                // Silencia logs pesados no console para requisições não autenticadas normais
+                console.log("Navigazione come visitatore anonimo.");
+            });
     }, []);
 
     // Cálculo dinâmico baseado no carrinho real
@@ -40,12 +46,11 @@ function Checkout() {
     const shipping = subtotal >= 50 || subtotal === 0 ? 0.00 : 4.90; // Frete grátis acima de €50
     const total = subtotal + shipping;
 
-    // src/pages/Checkout.jsx
     const handleSubmitOrder = (e) => {
         e.preventDefault();
 
         if (cartItems.length === 0) {
-            alert("Il carrello è vuoto! Aggiungi dei produtos prima di procedere.");
+            alert("Il carrello è vuoto! Aggiungi dei prodotti prima di procedere.");
             return;
         }
 
@@ -59,7 +64,7 @@ function Checkout() {
         const orderPayload = {
             totale: total,
             prodotti: stringProdotti,
-            emailUtente: emailDigitato // 🚨 Envia o e-mail que está escrito na caixinha de texto!
+            emailUtente: emailDigitato // Envia o e-mail que está escrito na caixinha de texto!
         };
 
         fetch("https://ilsegreto-backend.onrender.com/api/orders/create", {
@@ -69,7 +74,6 @@ function Checkout() {
             credentials: "include"
         })
             .then(res => {
-                // Se o Java der qualquer erro, vamos ler a mensagem real que ele mandou
                 if (!res.ok) {
                     return res.text().then(text => { throw new Error(text) });
                 }
@@ -92,7 +96,7 @@ function Checkout() {
                     <p className="success-message">Grazie per il tuo acquisto su <strong>Il Segreto della Bellezza</strong>.</p>
                     <div className="order-details-box">
                         <p><strong>Numero Ordine:</strong> {generatedOrderCode}</p>
-                        <p>Ti abbiamo inviato un'e-mail di conferma con i dettagli del tracciamento.</p>
+                        <p>Ti abbiamo inviato un'e-mail di confirma con i dettagli del tracciamento.</p>
                     </div>
                     <Link to="/">
                         <button className="primary-button home-return-btn">Torna alla Home</button>
@@ -189,7 +193,6 @@ function Checkout() {
                             </label>
                         </div>
 
-                        {/* Conditional input fields for Credit Card */}
                         {paymentMethod === 'credit_card' && (
                             <div className="credit-card-fields">
                                 <div className="input-group">
@@ -215,7 +218,7 @@ function Checkout() {
 
                         {paymentMethod === 'pix_paypal' && (
                             <div className="alternative-payment-info">
-                                <p>Verrai reindirizzato alla piattaforma sicura per completare il pagamento istantaneo in totale sicurezza.</p>
+                                <p>Verrai reindirizzato alla piattaforma sicura per completare il pagamento istantaneo in totale segurança.</p>
                             </div>
                         )}
                     </div>
